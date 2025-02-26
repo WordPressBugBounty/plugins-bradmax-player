@@ -1,7 +1,7 @@
 <?php
 /*
  Plugin Name: Bradmax Player
- Version: 1.1.30
+ Version: 1.1.31
  Plugin URI: https://bradmax.com/site/en/#contact
  Author: bradmax
  Author URI: https://bradmax.com/site/en/#contact
@@ -23,8 +23,8 @@ if (!class_exists('Bradmax_Player_Plugin')) {
 
 	class Bradmax_Player_Plugin {
 
-		const PLUGIN_VERSION = '1.1.30';
-		const BRADMAX_PLAYER_VERSION = '2.14.417';
+		const PLUGIN_VERSION = '1.1.31';
+		const BRADMAX_PLAYER_VERSION = '2.14.470';
 
 		const CUSTOMIZED_PLAYER_FILE_PATH = '/assets/js/bradmax_player.js';
 
@@ -198,18 +198,16 @@ if (!class_exists('Bradmax_Player_Plugin')) {
 			// Use double wrappers for having auto-scalling container to full width with aspect ratio 16:9.
 			$player_wrapper_class_str = isset($params['class']) ? ('class="'.esc_attr($params['class']).'" ') : '';
 			$player_wrapper_id = esc_attr($player_wrapper_id);
-			$player_wrapper_str = <<<EOT
-				<div style="width: 100%;padding-bottom: 56.25%;position: relative;" $player_wrapper_class_str>
-					<div id="$player_wrapper_id" style="position: absolute;top: 0; bottom: 0; left: 0; right: 0;"></div>
-				</div>
-EOT;
+			$player_wrapper_str = "".
+"				<div style=\"width: 100%;padding-bottom: 56.25%;position: relative;\" $player_wrapper_class_str>\n".
+"					<div id=\"$player_wrapper_id\" style=\"position: absolute;top: 0; bottom: 0; left: 0; right: 0;\"></div>\n".
+"				</div>\n";
 
 			// If style is defined use just simple single wrapper for player and inline styles.
 			if(!empty($params['style'])) {
 				$player_wrapper_style_str = esc_attr($params['style']);
-				$player_wrapper_str = <<<EOT
-					<div id="$player_wrapper_id" style="$player_wrapper_style_str" $player_wrapper_class_str></div>
-EOT;
+				$player_wrapper_str = "".
+"					<div id=\"$player_wrapper_id\" style=\"$player_wrapper_style_str\" $player_wrapper_class_str></div>\n";
 			}
 
 			return $player_wrapper_str;
@@ -512,25 +510,24 @@ EOT;
 			$player_wrapper_id = "bradmax-player-" . $player_uniqid;
 			$player_wrapper_str = self::bradmax_video_build_player_wrapper($player_wrapper_id, $params);
 
-			$output = <<<EOT
-	$player_wrapper_str
-	<script type="text/javascript">
-		function $player_callback_name() {
-			var $player_config_var_name = $player_config_str;
-			var element = document.getElementById("$player_wrapper_id");
-			var player = window.bradmax.player.create(element, $player_config_var_name);
-			// Back compability.
-			if(!window.player) {
-				window.player = player;
-			}
-		}
-		if(window.bradmax && window.bradmax.player) {
-			$player_callback_name();
-		} else {
-			window.addEventListener('load', $player_callback_name);
-		}
-	</script>
-EOT;
+			$output = "" . 
+"	$player_wrapper_str \n".
+"	<script type=\"text/javascript\">\n".
+"		function $player_callback_name() {\n".
+"			var $player_config_var_name = $player_config_str;\n".
+"			var element = document.getElementById(\"$player_wrapper_id\");\n".
+"			var player = window.bradmax.player.create(element, $player_config_var_name);\n".
+"			// Back compability.\n".
+"			if(!window.player) {\n".
+"				window.player = player;\n".
+"			}\n".
+"		}\n".
+"		if(window.bradmax && window.bradmax.player) {\n".
+"			$player_callback_name();\n".
+"		} else {\n".
+"			window.addEventListener('load', $player_callback_name);\n".
+"		}\n".
+"	</script>\n";
 			return $output;
 		}
 	}
