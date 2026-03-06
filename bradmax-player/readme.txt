@@ -2,13 +2,13 @@
 Contributors: bradmax
 Tags: video, html5, video streaming, HLS, MPEG-DASH
 Requires at least: 4.2
-Tested up to: 6.7.2
-Stable tag: 1.1.31
+Tested up to: 6.9
+Stable tag: 1.1.32
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Author URI: https://bradmax.com/site/en/#contact
 Author: bradmax
-Version: 1.1.31
+Version: 1.1.32
 Donate link: https://www.paypal.com/donate/?hosted_button_id=PJPZBHU2UC52N
 
 Embed video stream easily in WordPress using Bradmax Player. Use responsive HTML5 video player for playing HLS, MPEG-DASH, MSS streams.
@@ -256,6 +256,17 @@ Yes.
 none
 
 == Changelog ==
+
+= 1.1.32 =
+
+* Upgrading default player to v2.15.50 (bug fixes & improvements)
+** Improved navigation.
+** Improved support for accessibility when stream supports it.
+** Added additional translations for default error messages.
+** Improving reliability (if for non-critical player plug crushes it has no impact on further playback)
+** Solving problem with incorrect Dolby-Digital audio track support by EdgeChromium 141.
+** Fixing timing issues on Safari browser.
+** Adding played debug info in player context view.
 
 = 1.1.31 =
 

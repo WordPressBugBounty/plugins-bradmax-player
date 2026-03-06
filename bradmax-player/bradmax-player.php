@@ -1,7 +1,7 @@
 <?php
 /*
  Plugin Name: Bradmax Player
- Version: 1.1.31
+ Version: 1.1.32
  Plugin URI: https://bradmax.com/site/en/#contact
  Author: bradmax
  Author URI: https://bradmax.com/site/en/#contact
@@ -23,8 +23,8 @@ if (!class_exists('Bradmax_Player_Plugin')) {
 
 	class Bradmax_Player_Plugin {
 
-		const PLUGIN_VERSION = '1.1.31';
-		const BRADMAX_PLAYER_VERSION = '2.14.470';
+		const PLUGIN_VERSION = '1.1.32';
+		const BRADMAX_PLAYER_VERSION = '2.15.50';
 
 		const CUSTOMIZED_PLAYER_FILE_PATH = '/assets/js/bradmax_player.js';
 
